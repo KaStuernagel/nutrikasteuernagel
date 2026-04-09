@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Karina | Nutrição com estratégia, leveza e resultado sustentável</title>
+  <meta name="description" content="Acompanhamento nutricional para mulheres que querem emagrecer com consistência, sem radicalismo e com resultado sustentável." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8f4ef;
+      --bg-soft: #fffdf9;
+      --card: rgba(255,255,255,0.7);
+      --text: #2f241f;
+      --muted: #776861;
+      --line: rgba(60, 40, 30, 0.10);
+      --primary: #a18472;
+      --primary-dark: #7d5c49;
+      --accent: #d9c2b2;
+      --shadow: 0 20px 50px rgba(75, 52, 41, 0.08);
+      --radius: 28px;
+      --container: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(217,194,178,0.18), transparent 30%),
+        linear-gradient(180deg, #fcfaf7 0%, var(--bg) 100%);
+      line-height: 1.65;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    p { font-weight: 300; }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--container));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(252, 250, 247, 0.78);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      border-radius: 999px;
+      padding: 0.95rem 1.5rem;
+      font-weight: 500;
+      transition: 0.25s ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .button.primary {
+      letter-spacing: 0.3px;
+      background: var(--text);
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .button.primary:hover { transform: translateY(-2px); background: #1f1713; }
+    .button.secondary {
+      backdrop-filter: blur(6px);
+      background: rgba(255,255,255,0.66);
+      border-color: var(--line);
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 4.5rem 0 2.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: 0.45rem;
+      align-items: center;
+      padding: 0.45rem 0.85rem;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--primary-dark);
+      font-size: 0.84rem;
+      margin-bottom: 1.2rem;
+    }
+
+    h1, h2, h3 {
+      margin: 0 0 1rem;
+      line-height: 1.15;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 4.9rem);
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      max-width: 12ch;
+    }
+
+    .lead {
+      font-size: 1.08rem;
+      font-weight: 300;
+      letter-spacing: 0.2px;
+      color: var(--muted);
+      max-width: 58ch;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .mini-proof {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .proof-card {
+      padding: 1rem 1.1rem;
+      background: rgba(255,255,255,0.65);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .proof-card strong {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-card {
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(255,255,255,0.68));
+      padding: 1rem;
+      border-radius: 36px;
+      border: 1px solid rgba(255,255,255,0.72);
+      box-shadow: 0 35px 70px rgba(76, 54, 42, 0.14);
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: auto 1.2rem 1.2rem 1.2rem;
+      height: 22%;
+      background: linear-gradient(180deg, rgba(47,36,31,0), rgba(47,36,31,0.08));
+      border-radius: 0 0 28px 28px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-card img {
+      width: 100%;
+      height: auto;
+      max-height: 760px;
+      object-fit: contain;
+      border-radius: 28px;
+      position: relative;
+      z-index: 0;
+    }
+
+    .floating-note {
+      position: absolute;
+      left: 1.75rem;
+      right: 1.75rem;
+      bottom: 1.75rem;
+      max-width: 360px;
+      margin-left: auto;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(60, 40, 30, 0.08);
+      border-radius: 24px;
+      padding: 1.15rem 1.2rem;
+      box-shadow: 0 18px 45px rgba(34, 24, 19, 0.10);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      z-index: 2;
+    }
+
+    .floating-note strong {
+      display: block;
+      font-size: 1.05rem;
+      line-height: 1.35;
+      margin-bottom: 0.35rem;
+    }
+
+    section {
+      padding: 5.5rem 0;
+      padding: 4.5rem 0;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 2.2rem;
+    }
+
+    .section-head h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3vw, 3.3rem);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .value-banner {
+      padding: 2rem;
+      border-radius: 30px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.86), rgba(217,194,178,0.24));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .value-banner h2 {
+      max-width: 18ch;
+    }
+
+    .highlights {
+      display: grid;
+      gap: 1.25rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 2rem;
+    }
+
+    .highlight-card {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 1rem;
+      align-items: center;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .highlight-card img {
+      width: 100%;
+      height: auto;
+      min-height: 150px;
+      object-fit: contain;
+      background: #f7f3ee;
+    }
+
+    .highlight-card .content {
+      padding: 1.2rem 1.2rem 1.2rem 0;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .benefit {
+      padding: 1.4rem;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.75);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      min-height: 150px;
+    }
+
+    .benefit span {
+      width: 42px;
+      height: 42px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(159,124,104,0.12);
+      color: var(--primary-dark);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .belief-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .belief-card {
+      background: rgba(255,255,255,0.78);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .belief-card ul {
+      margin: 1rem 0 0;
+      padding-left: 1.1rem;
+      color: var(--muted);
+    }
+
+    .belief-visual img {
+      border-radius: 30px;
+      height: auto;
+      max-height: 420px;
+      width: 100%;
+      object-fit: contain;
+      background: #f7f3ee;
+      box-shadow: var(--shadow);
+    }
+
+    
+    
+    .testimonials-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 1.4rem;
+      flex-wrap: wrap;
+      margin-inline: auto;
+    }
+
+    .video-card {
+      width: 100%;
+      max-width: 280px;
+      border-radius: 24px;
+      padding: 0;
+      background: rgba(255,255,255,0.84);
+      border: 1px solid var(--line);
+      box-shadow: 0 20px 45px rgba(75, 52, 41, 0.10);
+      overflow: hidden;
+      display: block;
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
+    }
+
+    .video-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 28px 50px rgba(75, 52, 41, 0.14);
+    }
+
+    .video-card video {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 9 / 16;
+      object-fit: contain;
+      background: #0f0f10;
+      display: block;
+    }
+
+    .video-caption {
+      padding: 0.95rem 1rem 1.1rem;
+      text-align: center;
+    }
+
+    .video-caption h3 {
+      font-size: 0.98rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .video-caption p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .image-carousel-wrap {
+      margin-top: 2.25rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .image-carousel {
+      width: 100%;
+      max-width: 560px;
+      position: relative;
+      margin-inline: auto;
+    }
+
+    .carousel-viewport {
+      overflow: hidden;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.76);
+      box-shadow: 0 20px 45px rgba(75, 52, 41, 0.10);
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.45s ease;
+      will-change: transform;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0.75rem;
+      background: linear-gradient(180deg, rgba(255,255,255,0.84), rgba(248,244,239,0.92));
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: auto;
+      max-height: 460px;
+      object-fit: contain;
+      border-radius: 22px;
+      background: #f7f3ee;
+      display: block;
+    }
+
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.85rem;
+      margin-top: 0.95rem;
+    }
+
+    .carousel-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.90);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 1.1rem;
+      box-shadow: 0 14px 30px rgba(75, 52, 41, 0.10);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .carousel-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 36px rgba(75, 52, 41, 0.14);
+    }
+
+    .carousel-dots {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 0;
+      background: rgba(47,36,31,0.18);
+      cursor: pointer;
+      padding: 0;
+      transition: transform 0.22s ease, background 0.22s ease;
+    }
+
+    .carousel-dot.active {
+      background: var(--primary-dark);
+      transform: scale(1.15);
+    }
+
+    @media (min-width: 1200px) {
+      .video-card {
+        max-width: 260px;
+      }
+
+      .image-carousel {
+        max-width: 520px;
+      }
+
+      .carousel-slide img {
+        max-height: 420px;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .testimonials-wrap {
+        gap: 1.1rem;
+      }
+
+      .video-card {
+        max-width: 300px;
+      }
+
+      .image-carousel {
+        max-width: 540px;
+      }
+
+      .carousel-slide img {
+        max-height: 520px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .video-card {
+        max-width: 100%;
+      }
+
+      .image-carousel {
+        max-width: 100%;
+      }
+
+      .carousel-slide img {
+        max-height: 420px;
+      }
+    }
+
+
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .gallery-grid img {
+      height: auto;
+      max-height: 420px;
+      width: 100%;
+      object-fit: contain;
+      border-radius: 24px;
+      background: #f7f3ee;
+      box-shadow: var(--shadow);
+      padding: 0.35rem;
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
+    }
+
+    .gallery-grid img:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 46px rgba(75, 52, 41, 0.13);
+    }
+
+    .cta {
+      padding-top: 2rem;
+    }
+
+    .cta-box {
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 34px;
+      padding: 2.5rem;
+      background: linear-gradient(135deg, #2d221d 0%, #4a382f 100%);
+      color: #f7f2ee;
+      box-shadow: 0 28px 60px rgba(40, 27, 22, 0.22);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .cta-box p { color: rgba(247,242,238,0.78); margin: 0.6rem 0 0; }
+
+    footer {
+      padding: 2.5rem 0 4rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .belief-grid,
+      .highlights,
+      .benefits-grid,
+      .testimonials-wrap,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card img,
+      .belief-visual img {
+        height: auto;
+        max-height: 640px;
+      }
+
+      .floating-note {
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+        max-width: 92%;
+      }
+
+      .mini-proof {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav { flex-direction: column; align-items: flex-start; }
+      .nav-links { flex-wrap: wrap; }
+      .hero { padding-top: 2.5rem; }
+      .highlight-card { grid-template-columns: 1fr; }
+      .highlight-card .content { padding: 0 1.2rem 1.2rem; }
+      .value-banner,
+      .belief-card,
+      .cta-box {
+      border: 1px solid rgba(255,255,255,0.1); padding: 1.5rem; }
+      .gallery-grid img { height: auto; max-height: 420px; } 
+      .floating-note { position: static; max-width: none; margin-top: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#inicio">Karina</a>
+      <nav class="nav-links">
+        <a href="#beneficios">Benefícios</a>
+        <a href="#processo">Processo</a>
+        <a href="#experiencias">Experiências</a>
+        <a class="button secondary" href="https://wa.me/5547991263340?text=Ol%C3%A1%2C%20quero%20entender%20como%20funciona%20o%20acompanhamento." target="_blank" rel="noopener">Quero entender como funciona</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Nutrição feminina • estratégia • leveza</div>
+          <h1>Nutrição com estratégia, leveza e resultado sustentável.</h1>
+          <p class="lead">
+            Um acompanhamento pensado para mulheres que querem emagrecer com consistência — sem radicalismo,
+            sem culpa e com método.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://wa.me/5547991263340?text=Ol%C3%A1%2C%20quero%20entender%20como%20funciona%20o%20acompanhamento." target="_blank" rel="noopener">Quero entender como funciona</a>
+            <a class="button secondary" href="#experiencias">Ver experiências reais</a>
+          </div>
+
+          <div class="mini-proof">
+            <div class="proof-card">
+              <strong>Sem radicalismo</strong>
+              <div>Um plano possível de seguir dentro da sua rotina.</div>
+            </div>
+            <div class="proof-card">
+              <strong>Com método</strong>
+              <div>Direcionamento claro, acompanhamento e ajustes estratégicos.</div>
+            </div>
+            <div class="proof-card">
+              <strong>Com constância</strong>
+              <div>Resultados que fazem sentido hoje e continuam no longo prazo.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-card">
+            <img src="assets/hero.jpeg" alt="Karina em um ambiente acolhedor, segurando uma xícara e tablet" />
+            <div class="floating-note">
+              <strong>Um processo que respeita a sua vida real.</strong>
+              <p style="margin:0.45rem 0 0; color: var(--muted);">Mais clareza, mais leveza e decisões sustentáveis ao longo da sua jornada.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="value-banner">
+          <div class="section-head" style="margin-bottom: 0;">
+            <h2>Você não precisa de mais uma dieta.</h2>
+            <p>
+              Precisa de um processo que funcione na sua rotina e se sustente no longo prazo.
+            </p>
+          </div>
+
+          <div class="highlights">
+            <article class="highlight-card">
+              <img src="assets/img1.jpeg" alt="Karina sentada, olhando o celular" />
+              <div class="content">
+                <h3>Leveza sem perder direção</h3>
+                <p>Uma condução acolhedora, mas com estratégia e critérios claros para avançar.</p>
+              </div>
+            </article>
+            <article class="highlight-card">
+              <img src="assets/img2.jpeg" alt="Karina sorrindo sentada no chão" />
+              <div class="content">
+                <h3>Resultados com identidade</h3>
+                <p>O foco não é copiar um padrão. É encontrar o que realmente funciona para você.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="beneficios">
+      <div class="container">
+        <div class="section-head">
+          <h2>Com o acompanhamento, você desenvolve</h2>
+          <p>
+            Uma relação mais consistente com o seu processo, com decisões alimentares mais claras,
+            sustentáveis e alinhadas ao seu dia a dia.
+          </p>
+        </div>
+
+        <div class="benefits-grid">
+          <article class="benefit">
+            <span>01</span>
+            <h3>Relação mais equilibrada com a comida</h3>
+            <p>Menos culpa, menos extremos e mais consciência nas escolhas do dia a dia.</p>
+          </article>
+          <article class="benefit">
+            <span>02</span>
+            <h3>Mais energia e constância no dia a dia</h3>
+            <p>Um processo pensado para caber na rotina e favorecer continuidade, não recaídas.</p>
+          </article>
+          <article class="benefit">
+            <span>03</span>
+            <h3>Redução de gordura com manutenção de resultados</h3>
+            <p>Estratégias voltadas para evolução real e sustentável, com visão de longo prazo.</p>
+          </article>
+          <article class="benefit">
+            <span>04</span>
+            <h3>Clareza sobre o que funciona para o seu corpo</h3>
+            <p>Menos tentativa e erro. Mais entendimento, personalização e segurança.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="processo">
+      <div class="container belief-grid">
+        <div class="belief-card">
+          <div class="eyebrow">Quebra de crença</div>
+          <h2 style="font-family:'Playfair Display', serif; font-size: clamp(2rem, 3vw, 3rem); letter-spacing:-0.03em;">Se você já tentou várias abordagens e não conseguiu manter o resultado…</h2>
+          <p>
+            o problema talvez nunca tenha sido falta de força de vontade.
+            Muitas vezes, o que faltou foi um método coerente com a sua rotina, seu corpo e sua fase de vida.
+          </p>
+          <ul>
+            <li>Sem terrorismo alimentar.</li>
+            <li>Sem protocolos engessados.</li>
+            <li>Sem viver recomeçando toda segunda-feira.</li>
+          </ul>
+        </div>
+        <div class="belief-visual">
+          <img src="assets/img3.jpeg" alt="Karina sentada em ambiente claro e acolhedor" />
+        </div>
+      </div>
+    </section>
+
+    <section id="experiencias">
+      <div class="container">
+        <div class="section-head" style="text-align:center; margin-inline:auto;">
+          <h2>Experiências reais de quem viveu o processo</h2>
+          <p>
+            Mais do que resultados estéticos, o acompanhamento transforma a forma como minhas pacientes
+            se relacionam com a alimentação e com o próprio corpo.
+          </p>
+        </div>
+
+        
+<div class="testimonials-wrap">
+          <article class="video-card">
+            <video controls preload="metadata" playsinline>
+              <source src="assets/vanessa.mp4" type="video/mp4">
+            </video>
+            <div class="video-caption">
+              <h3>Depoimento Vanessa</h3>
+              <p>História real de transformação com acompanhamento nutricional.</p>
+            </div>
+          </article>
+
+          <article class="video-card">
+            <video controls preload="metadata" playsinline>
+              <source src="assets/michele.mp4" type="video/mp4">
+            </video>
+            <div class="video-caption">
+              <h3>Depoimento Michele</h3>
+              <p>Evolução construída com constância, clareza e apoio próximo.</p>
+            </div>
+          </article>
+
+          <article class="video-card">
+            <video controls preload="metadata" playsinline>
+              <source src="assets/jessica.mp4" type="video/mp4">
+            </video>
+            <div class="video-caption">
+              <h3>Depoimento Jéssica</h3>
+              <p>Mais leveza, mais confiança e resultados sustentáveis.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="image-carousel-wrap">
+          <div class="image-carousel" aria-label="Carrossel de imagens de resultados">
+            <div class="carousel-viewport">
+              <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-slide"><img src="assets/carrossel1.jpeg" alt="Imagem de resultado 1"></div>
+                <div class="carousel-slide"><img src="assets/carrossel2.jpeg" alt="Imagem de resultado 2"></div>
+                <div class="carousel-slide"><img src="assets/carrossel3.jpeg" alt="Imagem de resultado 3"></div>
+                <div class="carousel-slide"><img src="assets/carrossel4.jpeg" alt="Imagem de resultado 4"></div>
+                <div class="carousel-slide"><img src="assets/carrossel5.jpeg" alt="Imagem de resultado 5"></div>
+                <div class="carousel-slide"><img src="assets/carrossel6.jpeg" alt="Imagem de resultado 6"></div>
+              </div>
+            </div>
+
+            <div class="carousel-controls">
+              <button class="carousel-btn" id="prevSlide" aria-label="Imagem anterior">‹</button>
+              <div class="carousel-dots" id="carouselDots"></div>
+              <button class="carousel-btn" id="nextSlide" aria-label="Próxima imagem">›</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <section class="cta" id="contato">
+      <div class="container">
+        <div class="cta-box">
+          <div>
+            <h2 style="font-family:'Playfair Display', serif; font-size: clamp(2rem, 3vw, 3rem); margin:0;">Pronta para entender como esse acompanhamento funciona para você?</h2>
+            <p>Podemos transformar esse botão no link do WhatsApp, formulário ou agenda online.</p>
+          </div>
+          <a class="button primary" href="https://wa.me/5547991263340" target="_blank" rel="noopener noreferrer">Quero entender como funciona</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div>© 2026 Karina • Site conceitual em HTML inspirado na proposta visual do tema Highlights.</div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const track = document.getElementById('carouselTrack');
+      const dotsWrap = document.getElementById('carouselDots');
+      const prev = document.getElementById('prevSlide');
+      const next = document.getElementById('nextSlide');
+      if (!track || !dotsWrap || !prev || !next) return;
+
+      const slides = Array.from(track.children);
+      let index = 0;
+
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Ir para imagem ' + (i + 1));
+        dot.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(dot);
+      });
+
+      const dots = Array.from(dotsWrap.children);
+
+      function update() {
+        track.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+      }
+
+      function goTo(i) {
+        index = (i + slides.length) % slides.length;
+        update();
+      }
+
+      prev.addEventListener('click', () => goTo(index - 1));
+      next.addEventListener('click', () => goTo(index + 1));
+
+      let autoplay = setInterval(() => goTo(index + 1), 5000);
+      const carousel = document.querySelector('.image-carousel');
+      carousel.addEventListener('mouseenter', () => clearInterval(autoplay));
+      carousel.addEventListener('mouseleave', () => autoplay = setInterval(() => goTo(index + 1), 5000));
+
+      update();
+    })();
+  </script>
+
+</body>
+</html>
+
+<style>img{object-fit:contain;height:auto;}</style>
+<style>
+.highlight-card:hover,
+.benefit:hover,
+.proof-card:hover {
+  transform: translateY(-4px);
+  transition: 0.3s ease;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+}
+</style>
